@@ -82,18 +82,46 @@ def showChords(result):
 	return out
 		
 
-o = []
-for a in range(OCTAVE * 2):
-	o.append(0)
-tuning = [0, 5, 10, 3, 7, 0]
-f = []
-for a in range(len(tuning)):
-	f.append(0)
-AllFrets = {}
-countCowboys(tuning, 0, o, f, AllFrets)
+# For a given tuning, show the possible chords followed by the strumming
+# for the chords
+def makeChordChart(tuning):
+	ts = "Tuning: "
+	space = ""
+	for a in range(len(tuning)):
+		ts += space + NOTES[tuning[a]] 	
+		space = " "
+	print ts
+	o = []
+	for a in range(OCTAVE * 2):
+		o.append(0)
+	f = []
+	for a in range(len(tuning)):
+		f.append(0)
+	AllFrets = {}
+	countCowboys(tuning, 0, o, f, AllFrets)
 
-# Show all the possible chords for this tuning
-print showChords(o)
+	# Show all the possible chords for this tuning
+	print "Possible \"Cowboy Chords\": " + showChords(o)
+	# And all the fret fingerings for that tuning
+	for fret in sorted(AllFrets.keys()):
+		print fret
 
-for fret in sorted(AllFrets.keys()):
-	print fret
+# [0, 5, 10, 3, 7, 0] is EADGBE tuning.
+# Here, the array, from left to right, goes from low string to high string
+# The number is the note number in the octave for the string, with E as "0"
+# Since A is five semitones above E, it has value 5.  D is 10 semitones
+# above E and hence is 10. G is only three semitones above E, so is 3
+# Here's a full table
+# E	0
+# F	1
+# F#/Gb	2
+# G	3
+# G#/Ab	4
+# A	5
+# A#/Bb	6
+# B	7
+# C 	8
+# C#/Db	9
+# D	10
+# D#/Eb	11
+makeChordChart([0, 5, 10, 3, 7, 0])
