@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
  
-import copy
+import copy, sys
 
 OCTAVE = 12
 CHORDS = [[1,0,0,0,1,0,0,1,0,0,0,0], # MAJOR TRIAD
@@ -155,6 +155,27 @@ def makeChordChart(tuning, threshold):
 	# Newline at end of chord chart for given tuning
 	print
 
+# If you have some CPU and time to burn, this will iterate through all of
+# the tunings where two strings are one of a certain number of possible
+# intervals
+# For example, if we run this function with [4,5,7], this will try
+# all of the tunings where two strings can be a major third (4), minor
+# third (5), or perfect fifth (7) from each other
+# strings is the number of strings we have on our guitar
+# threshold is the number of major chords possible for us to see the tuning
+# "string" is used so we can call this recursively; set it to 0 when
+# calling this function; t is used by the function (have it be [0])
+def tryManyTunings(i, strings, threshold, string, t):
+	if(string >= strings - 1):
+		#print t # (Useful progress indicator)
+		makeChordChart(t, threshold)
+		sys.stdout.flush()
+		return
+	for a in i:
+		b = copy.deepcopy(t)
+		b.append((t[-1] + a) % OCTAVE)
+		tryManyTunings(i, strings, threshold, string + 1, b)
+
 # [0, 5, 10, 3, 7, 0] is EADGBE tuning.
 # Here, the array, from left to right, goes from low string to high string
 # The number is the note number in the octave for the string, with E as "0"
@@ -174,6 +195,10 @@ def makeChordChart(tuning, threshold):
 # D	10
 # D#/Eb	11
 makeChordChart([0, 5, 10, 3, 7, 0],5)
+
+# If you have a lot of time, run this through a bunch of different
+# possible tunings
+#tryManyTunings([4,5,7],6,4,0,[0])
 
 # Standard "E minor" blues alt tuning
 #makeChordChart([0, 7, 0, 3, 7, 0],0)
