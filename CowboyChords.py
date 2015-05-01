@@ -12,6 +12,8 @@ NAMES = ['','m'] # Names of chords
 HIGHSTRUM = 3
 HIGHFRET = 4
 
+AllFrets = {}
+
 # Rotate a chord, to account for inversions
 def rotate(notes, amount):
 	out = []
@@ -31,6 +33,8 @@ def rotate(notes, amount):
 # but the "low E" string; 2: Strum just DGBE four high strings)
 
 def isTriad(tuning, strum, frets):
+	global AllFrets
+	global Seen
 	min = OCTAVE
 	notes = []
 	for a in range(OCTAVE):
@@ -40,8 +44,19 @@ def isTriad(tuning, strum, frets):
 	out = [-1, -1]
 	for a in range(len(CHORDS)):
 		for b in range(OCTAVE):
-			if(rotate(notes,b) == CHORDS[a]):
+			fretcount = 0
+			for c in range(len(frets)):
+				if(frets[c] > 0):
+					fretcount += 1
+			if(rotate(notes,b) == CHORDS[a] and fretcount <= 3):
 				out = [b, a]
+	# If a chord was found, note how to strum it
+	if(out != [-1, -1]):
+		f = copy.deepcopy(frets)
+		for a in range(strum):
+			f[a] = 'X';
+		line = NOTES[out[0]] + NAMES[out[1]] + " " + str(f)
+		AllFrets[line] = 1
 	return out
 
 # Find the number of possible cowboy chords in a given tuning
@@ -76,4 +91,9 @@ f = []
 for a in range(len(tuning)):
 	f.append(0)
 countCowboys(tuning, 0, o, f)
+
+# Show all the possible chords for this tuning
 print showChords(o)
+
+for fret in sorted(AllFrets.keys()):
+	print fret
