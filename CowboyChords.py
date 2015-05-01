@@ -20,7 +20,7 @@ HIGHFRET = 4
 # is the low string of the strummed chord (0: Strum all six; 1: Strum all 
 # but the "low E" string; 2: Strum just DGBE four high strings)
 
-def isTriad(tuning, strum):
+def isTriad(tuning, strum, frets):
 	min = OCTAVE
 	notes = []
 	for a in range(OCTAVE):
@@ -30,16 +30,18 @@ def isTriad(tuning, strum):
 			min = tuning[a] % OCTAVE
 	for a in range(strum, len(tuning)):
 		notes[(tuning[a] % OCTAVE) - min] = 1
+	out = -1
 	for a in range(len(CHORDS)):
 		if(notes == CHORDS[a]):
-			return min + (OCTAVE * a)
+			out = min + (OCTAVE * a)
+	print str(frets) + " " + str(tuning) + " " + str(strum) + " " + str(notes) + " " + str(out)
 	return -1
 
 # Find the number of possible cowboy chords in a given tuning
-def countCowboys(tuning, string, o):
+def countCowboys(tuning, string, o, f):
 	if(string >= len(tuning)):
 		for a in range(HIGHSTRUM):
-			itr = isTriad(tuning,a)
+			itr = isTriad(tuning,a,f)
 			if itr:
 				o[itr] = 1	
 		return 
@@ -47,7 +49,8 @@ def countCowboys(tuning, string, o):
 		tmp = copy.deepcopy(tuning)
 		tmp[string] += a
 		tmp[string] %= 12
-		countCowboys(tmp, string + 1, o)
+		f[string] = a
+		countCowboys(tmp, string + 1, o, f)
 
 def showChords(result):
 	out = ""
@@ -61,5 +64,9 @@ def showChords(result):
 o = []
 for a in range(OCTAVE * 2):
 	o.append(0)
-countCowboys([0,5,10,3,7,0], 0, o)
+tuning = [0, 5, 10, 3, 7, 0]
+f = []
+for a in range(len(tuning)):
+	f.append(0)
+countCowboys(tuning, 0, o, f)
 print showChords(o)
