@@ -8,6 +8,7 @@ CHORDS = [[1,0,0,0,1,0,0,1,0,0,0,0], # MAJOR TRIAD
 	  [1,0,0,1,0,0,0,1,0,0,0,0]  # MINOR TRIAD
          ]
 NOTES = ['E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#']
+#NOTES = ['E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb']
 NAMES = ['','m'] # Names of chords
 HIGHSTRUM = 3
 HIGHFRET = 4
