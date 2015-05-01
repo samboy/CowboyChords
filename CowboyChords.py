@@ -115,6 +115,8 @@ def showChords(result):
 # For a given tuning, show the possible chords followed by the strumming
 # for the chords
 def makeChordChart(tuning):
+	for a in range(len(tuning)):
+		tuning[a] = tuning[a] % OCTAVE
 	print "Tuning: " + tuningString(showTuning(tuning))
 	o = []
 	for a in range(OCTAVE * 2):
