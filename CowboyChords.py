@@ -11,7 +11,8 @@ NOTES = ['E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#']
 NAMES = ['','m'] # Names of chords
 HIGHSTRUM = 3
 HIGHFRET = 4
-
+MAXFINGERS = 3
+ROOTLOWSTRING = 1 # If 1, the root of the chord must be the low string strummed
 
 # Rotate a chord, to account for inversions
 def rotate(notes, amount):
@@ -26,10 +27,31 @@ def rotate(notes, amount):
 # A tuning is an array of 6 numbers between 0 and 11, corresponding to
 # notes in a 12-tone chromatic scale.  0 is E, 1 is F, 2 is F#, 3 is G, etc.
 
+# This converts a tuning in to a list of strings for each note
+def showTuning(tuning):
+	out = []
+	for a in range(len(tuning)):
+		out.append(NOTES[tuning[a]])
+	return out
+
+# This converts the output of showTuning in to a string
+def tuningString(sTuning):
+	out = ""
+	space = ""
+	for a in range(len(sTuning)):
+		b = sTuning[a]
+		if(b == 'X'):
+			out += space + "-"
+		else:
+			out += space + b
+		space = " "
+	return out
+
 # Is a given array of six tuning numbers a chord? 
 # This critter also takes a “strum” number, between 0 and 5, which
 # is the low string of the strummed chord (0: Strum all six; 1: Strum all 
 # but the "low E" string; 2: Strum just DGBE four high strings)
+# Frets is an array of the frets being fingered
 
 def isTriad(tuning, strum, frets, AllFrets):
 	min = OCTAVE
@@ -45,14 +67,22 @@ def isTriad(tuning, strum, frets, AllFrets):
 			for c in range(len(frets)):
 				if(frets[c] > 0):
 					fretcount += 1
-			if(rotate(notes,b) == CHORDS[a] and fretcount <= 3):
+			if(fretcount <= MAXFINGERS and 
+			   rotate(notes,b) == CHORDS[a]):
 				out = [b, a]
+
+	if(ROOTLOWSTRING == 1 and out[0] != tuning[strum]):
+		out = [-1, -1]
 	# If a chord was found, note how to strum it
 	if(out != [-1, -1]):
 		f = copy.deepcopy(frets)
 		for a in range(strum):
 			f[a] = 'X';
 		line = NOTES[out[0]] + NAMES[out[1]] + " " + str(f)
+		f = showTuning(tuning)
+		for a in range(strum):
+			f[a] = 'X';
+		line += " " + tuningString(f)
 		AllFrets[line] = 1
 	return out
 
@@ -85,12 +115,7 @@ def showChords(result):
 # For a given tuning, show the possible chords followed by the strumming
 # for the chords
 def makeChordChart(tuning):
-	ts = "Tuning: "
-	space = ""
-	for a in range(len(tuning)):
-		ts += space + NOTES[tuning[a]] 	
-		space = " "
-	print ts
+	print "Tuning: " + tuningString(showTuning(tuning))
 	o = []
 	for a in range(OCTAVE * 2):
 		o.append(0)
@@ -125,3 +150,6 @@ def makeChordChart(tuning):
 # D	10
 # D#/Eb	11
 makeChordChart([0, 5, 10, 3, 7, 0])
+
+# Standard "E minor" blues alt tuning
+makeChordChart([0, 7, 0, 3, 7, 0])
