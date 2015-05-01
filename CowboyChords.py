@@ -114,10 +114,11 @@ def showChords(result):
 
 # For a given tuning, show the possible chords followed by the strumming
 # for the chords
-def makeChordChart(tuning):
+# If "threshold" is over 0, only show the chords and strumming if at least
+# threshold number of Cowboy Chords are possible
+def makeChordChart(tuning, threshold):
 	for a in range(len(tuning)):
 		tuning[a] = tuning[a] % OCTAVE
-	print "Tuning: " + tuningString(showTuning(tuning))
 	o = []
 	for a in range(OCTAVE * 2):
 		o.append(0)
@@ -126,6 +127,16 @@ def makeChordChart(tuning):
 		f.append(0)
 	AllFrets = {}
 	countCowboys(tuning, 0, o, f, AllFrets)
+
+	if(threshold > 0):
+		count = 0
+		for a in range(len(o)):
+			if(o[a] != 0):
+				count += 1
+		if count < threshold:
+			return 
+
+	print "Tuning: " + tuningString(showTuning(tuning))
 
 	# Show all the possible chords for this tuning
 	print "Possible \"Cowboy Chords\": " + showChords(o)
@@ -151,17 +162,17 @@ def makeChordChart(tuning):
 # C#/Db	9
 # D	10
 # D#/Eb	11
-makeChordChart([0, 5, 10, 3, 7, 0])
+makeChordChart([0, 5, 10, 3, 7, 0],7)
 
 # Standard "E minor" blues alt tuning
-#makeChordChart([0, 7, 0, 3, 7, 0])
+#makeChordChart([0, 7, 0, 3, 7, 0],0)
 
 # Ralph Patt’s Major Thirds tuning
-#makeChordChart([0, 4, 8, 0, 4, 8])
+#makeChordChart([0, 4, 8, 0, 4, 8],0)
 
 # All forths tuning
-#makeChordChart([0, 5, 10, 3, 8, 1])
+#makeChordChart([0, 5, 10, 3, 8, 1],0)
 
 # All fifths tuning (this will take special strings, I think
-#makeChordChart([0, 7, 2, 9, 4, 11])
+#makeChordChart([0, 7, 2, 9, 4, 11],0)
 
