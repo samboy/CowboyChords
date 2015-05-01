@@ -12,7 +12,6 @@ NAMES = ['','m'] # Names of chords
 HIGHSTRUM = 3
 HIGHFRET = 4
 
-AllFrets = {}
 
 # Rotate a chord, to account for inversions
 def rotate(notes, amount):
@@ -32,9 +31,7 @@ def rotate(notes, amount):
 # is the low string of the strummed chord (0: Strum all six; 1: Strum all 
 # but the "low E" string; 2: Strum just DGBE four high strings)
 
-def isTriad(tuning, strum, frets):
-	global AllFrets
-	global Seen
+def isTriad(tuning, strum, frets, AllFrets):
 	min = OCTAVE
 	notes = []
 	for a in range(OCTAVE):
@@ -60,10 +57,10 @@ def isTriad(tuning, strum, frets):
 	return out
 
 # Find the number of possible cowboy chords in a given tuning
-def countCowboys(tuning, string, o, f):
+def countCowboys(tuning, string, o, f, AllFrets):
 	if(string >= len(tuning)):
 		for a in range(HIGHSTRUM):
-			itr = isTriad(tuning,a,f)
+			itr = isTriad(tuning,a,f,AllFrets)
 			if itr != [-1, -1]:
 				o[itr[0] + (OCTAVE * itr[1])] = 1	
 		return 
@@ -72,8 +69,10 @@ def countCowboys(tuning, string, o, f):
 		tmp[string] += a
 		tmp[string] %= 12
 		f[string] = a
-		countCowboys(tmp, string + 1, o, f)
+		countCowboys(tmp, string + 1, o, f, AllFrets)
 
+# Given a list of possible chords for a given tuning, show that list
+# as a one-liner of possible chords
 def showChords(result):
 	out = ""
 	for o in range(OCTAVE):
@@ -82,7 +81,7 @@ def showChords(result):
 				out += NOTES[o] + NAMES[t] + ' '
 	return out
 		
-	
+
 o = []
 for a in range(OCTAVE * 2):
 	o.append(0)
@@ -90,7 +89,8 @@ tuning = [0, 5, 10, 3, 7, 0]
 f = []
 for a in range(len(tuning)):
 	f.append(0)
-countCowboys(tuning, 0, o, f)
+AllFrets = {}
+countCowboys(tuning, 0, o, f, AllFrets)
 
 # Show all the possible chords for this tuning
 print showChords(o)
