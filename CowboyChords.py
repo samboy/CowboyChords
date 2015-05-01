@@ -12,6 +12,16 @@ NAMES = ['','m'] # Names of chords
 HIGHSTRUM = 3
 HIGHFRET = 4
 
+# Rotate a chord, to account for inversions
+def rotate(notes, amount):
+	out = []
+	amount %= OCTAVE
+	for a in range(OCTAVE):
+		out.append(notes[amount])
+		amount += 1
+		amount %= OCTAVE
+	return out
+
 # A tuning is an array of 6 numbers between 0 and 11, corresponding to
 # notes in a 12-tone chromatic scale.  0 is E, 1 is F, 2 is F#, 3 is G, etc.
 
@@ -26,14 +36,12 @@ def isTriad(tuning, strum, frets):
 	for a in range(OCTAVE):
 		notes.append(0)
 	for a in range(strum, len(tuning)):
-		if tuning[a] % OCTAVE < min:
-			min = tuning[a] % OCTAVE
-	for a in range(strum, len(tuning)):
-		notes[(tuning[a] % OCTAVE) - min] = 1
+		notes[tuning[a] % OCTAVE] = 1
 	out = -1
 	for a in range(len(CHORDS)):
-		if(notes == CHORDS[a]):
-			out = min + (OCTAVE * a)
+		for b in range(OCTAVE):
+			if(rotate(notes,b) == CHORDS[a]):
+				out = b + (OCTAVE * a)
 	print str(frets) + " " + str(tuning) + " " + str(strum) + " " + str(notes) + " " + str(out)
 	return -1
 
