@@ -157,12 +157,13 @@ def makeChordChart(tuning, threshold):
 
 # If you have some CPU and time to burn, this will iterate through all of
 # the tunings where two strings are one of a certain number of possible
-# intervals
+# intervals apart
 # For example, if we run this function with [4,5,7], this will try
-# all of the tunings where two strings can be a major third (4), minor
-# third (5), or perfect fifth (7) from each other
+# all of the tunings where two strings can be a major third (4), perfect
+# fourth (5), or perfect fifth (7) from each other
 # strings is the number of strings we have on our guitar
 # threshold is the number of major chords possible for us to see the tuning
+#
 # "string" is used so we can call this recursively; set it to 0 when
 # calling this function; t is used by the function (have it be [0])
 def tryManyTunings(i, strings, threshold, string, t):
