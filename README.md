@@ -52,3 +52,17 @@ a given guitar tuning.  A Cowboy Chord is a chord that:
 * While no standard Cowboy Chords double the third, this program allows
   the third to be doubled.
 
+## Installing and running
+
+This program is a basic Python script, without needing any non-standard
+libraries (Pip is not needed here!)
+
+If Python is installed:
+
+```
+python CowboyChords.py
+```
+
+Will output a list of possible Country Chords in standard EADGBE tuning.
+Edit the file to change the tuning used (or the chords looked for, etc.)
+
