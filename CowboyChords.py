@@ -24,24 +24,28 @@ def isTriad(tuning, strum):
 		if tuning[a] % OCTAVE < min:
 			min = tuning[a] % OCTAVE
 	for a in range(strum, len(tuning)):
-		notes[tuning[a] % OCTAVE] = 1
+		notes[(tuning[a] % OCTAVE) - min] = 1
 	if notes == MAJOR:
 		return min
 	if notes == MINOR:
 		return min + OCTAVE
 	return -1
 
-def countCowboys(tuning, string):
+def countCowboys(tuning, string, o):
 	if(string >= len(tuning)):
-		print tuning
-		#print isTriad(tuning,0)
-		#print isTriad(tuning,1)
-		#print isTriad(tuning,2)
-		return
+		for a in range(3):
+			itr = isTriad(tuning,a)
+			if itr:
+				o[itr] = 1	
+		return 
 	for a in range(4):
 		tmp = copy.deepcopy(tuning)
 		tmp[string] += a
 		tmp[string] %= 12
-		countCowboys(tmp, string + 1)
+		countCowboys(tmp, string + 1, o)
 
-countCowboys([0,5,10,3,7,0], 0)
+o = []
+for a in range(OCTAVE * 2):
+	o.append(0)
+countCowboys([0,5,10,3,7,0], 0, o)
+print o
