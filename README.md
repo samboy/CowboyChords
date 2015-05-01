@@ -46,8 +46,9 @@ a given guitar tuning.  A Cowboy Chord is a chord that:
 * The highest pitched six, five, or four strings are stummed when playing
   the chord
 * The chord is either a major triad or minor triad
-* While a factor for some guitarists, the program does not demand that
+* While not a factor for some guitarists, the program requires that
   the root of the chord is the lowest note played when being strummed.
+  This can be disabled by putting setting ROOTLOWSTRING to be 0.
 * While no standard Cowboy Chords double the third, this program allows
   the third to be doubled.
 
