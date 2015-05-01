@@ -5,11 +5,13 @@ import copy
 
 OCTAVE = 12
 CHORDS = [[1,0,0,0,1,0,0,1,0,0,0,0], # MAJOR TRIAD
-	  [1,0,0,1,0,0,0,1,0,0,0,0]  # MINOR TRIAD
+	  [1,0,0,1,0,0,0,1,0,0,0,0], # MINOR TRIAD
+	  [1,0,0,0,1,0,0,1,0,0,0,1], # MAJOR SEVENTH
+	  [1,0,0,1,0,0,0,1,0,0,1,0]  # MINOR SEVENTH
          ]
 NOTES = ['E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#']
 #NOTES = ['E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb']
-NAMES = ['','m'] # Names of chords
+NAMES = ['','m', '7', 'm7'] # Names of chords
 HIGHSTRUM = 3
 HIGHFRET = 4
 MAXFINGERS = 3
@@ -121,7 +123,7 @@ def makeChordChart(tuning, threshold):
 	for a in range(len(tuning)):
 		tuning[a] = tuning[a] % OCTAVE
 	o = []
-	for a in range(OCTAVE * 2):
+	for a in range(OCTAVE * len(CHORDS)):
 		o.append(0)
 	f = []
 	for a in range(len(tuning)):
