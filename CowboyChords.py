@@ -174,5 +174,10 @@ makeChordChart([0, 5, 10, 3, 7, 0],7)
 #makeChordChart([0, 5, 10, 3, 8, 1],0)
 
 # All fifths tuning (this will take special strings, I think
+# This has nine "Cowboy Chords", more than the eight with standard tuning
 #makeChordChart([0, 7, 2, 9, 4, 11],0)
+
+# An interesting tuning with nine "Cowboy Chords"
+# In this one, we flatten the D and G middle strings down a semitone
+#makeChordChart([0, 5, 9, 2, 7, 0],0)
 
