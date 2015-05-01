@@ -116,7 +116,7 @@ def showChords(result):
 # For a given tuning, show the possible chords followed by the strumming
 # for the chords
 # If "threshold" is over 0, only show the chords and strumming if at least
-# threshold number of Cowboy Chords are possible
+# threshold number of major Cowboy Chords are possible
 def makeChordChart(tuning, threshold):
 	for a in range(len(tuning)):
 		tuning[a] = tuning[a] % OCTAVE
@@ -130,20 +130,28 @@ def makeChordChart(tuning, threshold):
 	countCowboys(tuning, 0, o, f, AllFrets)
 
 	if(threshold > 0):
-		count = 0
+		count = []
+		b = -1
 		for a in range(len(o)):
+			if(a % OCTAVE == 0):
+				count.append(0)
+				b += 1
 			if(o[a] != 0):
-				count += 1
-		if count < threshold:
+				count[b] += 1
+		if count[0] < threshold:
 			return 
 
-	print "Tuning: " + tuningString(showTuning(tuning))
+	print ("Score: " + str(count) + 
+	       " Tuning: " + tuningString(showTuning(tuning)))
 
 	# Show all the possible chords for this tuning
 	print "Possible \"Cowboy Chords\": " + showChords(o)
 	# And all the fret fingerings for that tuning
 	for fret in sorted(AllFrets.keys()):
 		print fret
+
+	# Newline at end of chord chart for given tuning
+	print
 
 # [0, 5, 10, 3, 7, 0] is EADGBE tuning.
 # Here, the array, from left to right, goes from low string to high string
@@ -163,7 +171,7 @@ def makeChordChart(tuning, threshold):
 # C#/Db	9
 # D	10
 # D#/Eb	11
-makeChordChart([0, 5, 10, 3, 7, 0],7)
+makeChordChart([0, 5, 10, 3, 7, 0],5)
 
 # Standard "E minor" blues alt tuning
 #makeChordChart([0, 7, 0, 3, 7, 0],0)
