@@ -37,21 +37,20 @@ def isTriad(tuning, strum, frets):
 		notes.append(0)
 	for a in range(strum, len(tuning)):
 		notes[tuning[a] % OCTAVE] = 1
-	out = -1
+	out = [-1, -1]
 	for a in range(len(CHORDS)):
 		for b in range(OCTAVE):
 			if(rotate(notes,b) == CHORDS[a]):
-				out = b + (OCTAVE * a)
-	print str(frets) + " " + str(tuning) + " " + str(strum) + " " + str(notes) + " " + str(out)
-	return -1
+				out = [b, a]
+	return out
 
 # Find the number of possible cowboy chords in a given tuning
 def countCowboys(tuning, string, o, f):
 	if(string >= len(tuning)):
 		for a in range(HIGHSTRUM):
 			itr = isTriad(tuning,a,f)
-			if itr:
-				o[itr] = 1	
+			if itr != [-1, -1]:
+				o[itr[0] + (OCTAVE * itr[1])] = 1	
 		return 
 	for a in range(HIGHFRET):
 		tmp = copy.deepcopy(tuning)
