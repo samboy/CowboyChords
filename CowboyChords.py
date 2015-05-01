@@ -152,4 +152,14 @@ def makeChordChart(tuning):
 makeChordChart([0, 5, 10, 3, 7, 0])
 
 # Standard "E minor" blues alt tuning
-makeChordChart([0, 7, 0, 3, 7, 0])
+#makeChordChart([0, 7, 0, 3, 7, 0])
+
+# Ralph Patt’s Major Thirds tuning
+#makeChordChart([0, 4, 8, 0, 4, 8])
+
+# All forths tuning
+#makeChordChart([0, 5, 10, 3, 8, 1])
+
+# All fifths tuning (this will take special strings, I think
+#makeChordChart([0, 7, 2, 9, 4, 11])
+
