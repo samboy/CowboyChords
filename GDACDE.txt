@@ -21,7 +21,7 @@ I found a really intersting tuning:
 * A lot of the chords double the notes in unison, giving it a distinctly
   different tone than the traditional guitar tuning.
 
-Score: [6, 5, 4, 3] Tuning: E B F# A B C# (or CGDFGA or GDACDE)
+Score: [6, 5, 4, 3] Tuning: E B F# A B C# (or CGDFGA or DAEGAB or GDACDE)
 Possible "Cowboy Chords" (when the low note is E):
 
 Major: E F# G A B D 
