@@ -85,11 +85,11 @@ D-G-A   F-A#-C
 
 There is even some I-V-vi-IV progrssions there:
 
-Low E      Low G
----------- ----------
-A-E-f#m-D  C-G-Amin-F
-B-F#-g#m-E D-A-Bmin-G
-D-A-Bmin-G F-C-Dmin-A#
+Low E       Low G
+----------  ----------
+A-E-f#m-D   C-G-Amin-F
+B-F#-g#m-E  D-A-Bmin-G
+D-A-Bmin-G  F-C-Dmin-A#
 
 A couple of minor i-iv-v progressions:
 
