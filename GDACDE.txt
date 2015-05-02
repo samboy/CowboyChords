@@ -111,6 +111,7 @@ The tuning, however, is quirky:
 * We go up a perfect fifth twice
 * We then go up a minor third
 * We finally go up a whole step twice
+* The four high-pitched strings are within a perfect fifth of each other
 
 As an aside, EADGBE has only one usable I-V-vi-IV progression with 
 just Cowboy Chords:
