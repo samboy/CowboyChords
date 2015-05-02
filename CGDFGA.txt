@@ -20,7 +20,7 @@ I found a really intersting tuning:
 * A lot of the chords double the notes in unison, giving it a distinctly
   different tone than the traditional guitar tuning.
 
-Score: [6, 5, 4, 3] Tuning: E B F# A B C# (or CGDFGA)
+Score: [6, 5, 4, 3] Tuning: E B F# A B C# (or CGDFGA or GDACDE)
 Possible "Cowboy Chords" (when the low note is E):
 
 Major: E F# G A B D 
@@ -33,35 +33,35 @@ here is from low pitched string to high pitched string; 'X' means to not
 strum that string in the chord; the number is the fret held down (0 for
 open string):
 
-A ['X', 'X', 3, 0, 2, 3]    - - A A C# E
-Am ['X', 'X', 3, 0, 1, 3]   - - A A C E
+A    ['X', 'X', 3, 0, 2, 3]  - - A A C# E
+Am   ['X', 'X', 3, 0, 1, 3]  - - A A C E
 
-B ['X', 0, 0, 2, 0, 2]      - B F# B B D#
-B7 ['X', 0, 0, 1, 0, 2]     - B F# A# B D#
-Bm ['X', 0, 0, 2, 0, 1]     - B F# B B D
-Bm ['X', 0, 0, 2, 3, 1]     - B F# B D D
-Bm7 ['X', 0, 0, 0, 0, 1]    - B F# A B D
-Bm7 ['X', 0, 0, 0, 3, 1]    - B F# A D D
+B    ['X', 0, 0, 2, 0, 2]    - B F# B B D#
+B7   ['X', 0, 0, 1, 0, 2]    - B F# A# B D#
+Bm   ['X', 0, 0, 2, 0, 1]    - B F# B B D
+Bm   ['X', 0, 0, 2, 3, 1]    - B F# B D D
+Bm7  ['X', 0, 0, 0, 0, 1]    - B F# A B D
+Bm7  ['X', 0, 0, 0, 3, 1]    - B F# A D D
 
-D ['X', 3, 0, 0, 3, 1]      - D F# A D D
-D7 ['X', 3, 0, 0, 2, 0]     - D F# A C# C#
-D7 ['X', 3, 0, 0, 2, 1]     - D F# A C# D
-D7 ['X', 3, 0, 0, 3, 0]     - D F# A D C#
+D    ['X', 3, 0, 0, 3, 1]    - D F# A D D
+D7   ['X', 3, 0, 0, 2, 0]    - D F# A C# C#
+D7   ['X', 3, 0, 0, 2, 1]    - D F# A C# D
+D7   ['X', 3, 0, 0, 3, 0]    - D F# A D C#
 
-E [0, 0, 2, 2, 0, 3]        E B G# B B E
-E7 [0, 0, 2, 2, 0, 2]       E B G# B B D#
-Em [0, 0, 1, 2, 0, 3]       E B G B B E
-Em7 [0, 0, 1, 2, 0, 1]      E B G B B D
+E    [0, 0, 2, 2, 0, 3]      E B G# B B E
+E7   [0, 0, 2, 2, 0, 2]      E B G# B B D#
+Em   [0, 0, 1, 2, 0, 3]      E B G B B E
+Em7  [0, 0, 1, 2, 0, 1]      E B G B B D
 
-F# ['X', 'X', 0, 1, 2, 0]   - - F# A# C# C#
-F#m ['X', 'X', 0, 0, 2, 0]  - - F# A C# C#
-F#m [2, 2, 0, 0, 2, 0]      F# C# F# A C# C#
-F#m7 ['X', 'X', 0, 0, 2, 3] - - F# A C# E
+F#   ['X', 'X', 0, 1, 2, 0]  - - F# A# C# C#
+F#m  ['X', 'X', 0, 0, 2, 0]  - - F# A C# C#
+F#m  [2, 2, 0, 0, 2, 0]      F# C# F# A C# C#
+F#m7 ['X', 'X', 0, 0, 2, 3]  - - F# A C# E
 
-G ['X', 'X', 1, 2, 0, 1]    - - G B B D
-G7 [3, 0, 0, 2, 0, 1]       G B F# B B D
+G    ['X', 'X', 1, 2, 0, 1]  - - G B B D
+G7   [3, 0, 0, 2, 0, 1]      G B F# B B D
 
-G#m ['X', 'X', 2, 2, 0, 2]  - - G# B B D#
+G#m  ['X', 'X', 2, 2, 0, 2]  - - G# B B D#
 
 A number of Major I-IV-V progressions are possible:
 
