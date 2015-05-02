@@ -2,7 +2,8 @@ After running the Cowboy Chord finder against a huge number of tunings,
 I found a really intersting tuning:
 
 * This is the same tuning as a tenor guitar (CGDA), but with two notes
-  added between the third and forth string, making it CGDFGA
+  added between the third and forth string, making it CGDFGA.  To make
+  the tuning closer to the standard tuning, GDACDE works nicely.
 
 * Standard EADGBE tuning only allows one I-V-vi-IV progression with just
   "Cowboy Chords."  This tuning has three different possible "Cowboy Chord"
