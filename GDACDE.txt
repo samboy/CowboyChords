@@ -114,7 +114,6 @@ The tuning, however, is quirky:
 * The four high-pitched strings are within a perfect fifth of each other
 
 As an aside, EADGBE has only one usable I-V-vi-IV progression with 
-just Cowboy Chords:
-
-G-D-e-C (the chords fingered in my favorite tool, the ChordBuddy)
+just Cowboy Chords, G-D-e-C, three usable I-IV-V progressions
+(G,C,D; A,D,E; D,G,A), and one usable minor i-iv-v progression (a,d,e).
 
