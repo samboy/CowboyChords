@@ -143,17 +143,17 @@ def makeChordChart(tuning, threshold):
 		if count[0] < threshold:
 			return 
 
-	print ("Score: " + str(count) + 
-	       " Tuning: " + tuningString(showTuning(tuning)))
+	print(("Score: " + str(count) + 
+	       " Tuning: " + tuningString(showTuning(tuning))))
 
 	# Show all the possible chords for this tuning
-	print "Possible \"Cowboy Chords\": " + showChords(o)
+	print("Possible \"Cowboy Chords\": " + showChords(o))
 	# And all the fret fingerings for that tuning
 	for fret in sorted(AllFrets.keys()):
-		print fret
+		print(fret)
 
 	# Newline at end of chord chart for given tuning
-	print
+	print()
 
 # If you have some CPU and time to burn, this will iterate through all of
 # the tunings where two strings are one of a certain number of possible
